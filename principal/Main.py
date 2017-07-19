@@ -40,8 +40,9 @@ for quadro in config.get_Quadros():
 					mudar = trello.cards.update_idList(card["id"],lista[len(lista)-1]["id"])
 				print '      Computado com sucesso'
 			elif card_Detalhes[0]["data"]["text"][:6] == "Pontos":
-				tabela.insert_one({"_id":id,"nome" : card["name"], "pontos": int(card_Detalhes[0]["data"]["text"][8:]), "data": card_Detalhes[0]["date"][:10]+' '+card_Detalhes[0]["date"][11:19]})
+				tabela.insert_one({"_id":id,"nome" : card["name"], "pontos": float(card_Detalhes[0]["data"]["text"][8:]), "data": card_Detalhes[0]["date"][:10]+' '+card_Detalhes[0]["date"][11:19]})
 				mudar = trello.cards.update_idList(card["id"],lista[len(lista)-1]["id"])
+				print '      Computado com sucesso'
 			id = id + 1
 		except KeyError:
 			print '      Falha ao computar, chaves não encontradas'
